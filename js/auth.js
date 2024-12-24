@@ -1,24 +1,23 @@
 
 document.getElementById('loginButton').addEventListener('click', function () {
+   
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
 
     const loginData = {
-        "username": username.toString(),
-        "password": password.toString()
+        "username": "mauricio",
+        "password": "teste"
     };
 
     console.log(loginData);
 
     // Usando superagent para fazer a requisição POST
-    superagent.post('https://imprensamalakoff-backend.onrender.com/auth/login')
-        .send(loginData)  // Envia os dados do login
-        .set('Content-Type', 'application/json') // Define o cabeçalho para JSON
+    superagent.get('https://imprensamalakoff-backend.onrender.com/api/posts')
+        
         .then(response => {
             console.log(response);
             // Caso a resposta seja bem-sucedida
             if (response.status === 200) {
-                localStorage.setItem('authToken', response.body.token); // Salva o token
                 alert('Login bem-sucedido!');
                 toggleView();
                 fetchPosts();
