@@ -1,3 +1,4 @@
+
 document.getElementById('loginButton').addEventListener('click', function () {
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
@@ -7,30 +8,27 @@ document.getElementById('loginButton').addEventListener('click', function () {
         "password": password.toString()
     };
 
-    console.log(loginData)
+    console.log(loginData);
 
-    fetch('https://imprensamalakoff-backend.onrender.com/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(loginData)
-    })
-    .then(response => {
-        console.log(response)
-        if (!response.ok) throw new Error('Login falhou');
-        return response.json();
-    })
-    .then(data => {
-        localStorage.setItem('authToken', data.token); // Salva o token
-        alert('Login bem-sucedido!');
-        toggleView();
-        fetchPosts();
-    })
-    .catch(err => {
-        console.log(err);
-        alert('Falha no login.');
-    });
+    // Usando superagent para fazer a requisição POST
+    superagent.post('https://imprensamalakoff-backend.onrender.com/auth/login')
+        .send(loginData)  // Envia os dados do login
+        .set('Content-Type', 'application/json') // Define o cabeçalho para JSON
+        .then(response => {
+            console.log(response);
+            // Caso a resposta seja bem-sucedida
+            if (response.status === 200) {
+                localStorage.setItem('authToken', response.body.token); // Salva o token
+                alert('Login bem-sucedido!');
+                toggleView();
+                fetchPosts();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            alert('Falha no login.');
+        });
 });
-
 /**
  * Função para alternar entre as telas de login e editor.
  */
