@@ -2,12 +2,22 @@ document.getElementById('loginButton').addEventListener('click', function () {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    fetch('http://localhost:8080/auth/login', {
+    console.log(username === "1mmauricio")
+    console.log(password === "teste")
+    const loginData = {
+        username: "1mmauricio",
+        password: "teste"
+    };
+
+    console.log(loginData)
+
+    fetch('https://imprensamalakoff-backend.onrender.com/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify(loginData)
     })
     .then(response => {
+        console.log(response)
         if (!response.ok) throw new Error('Login falhou');
         return response.json();
     })
@@ -15,9 +25,10 @@ document.getElementById('loginButton').addEventListener('click', function () {
         localStorage.setItem('authToken', data.token); // Salva o token
         alert('Login bem-sucedido!');
         toggleView();
+        fetchPosts();
     })
     .catch(err => {
-        console.error(err);
+        console.log(err);
         alert('Falha no login.');
     });
 });
@@ -28,7 +39,7 @@ document.getElementById('loginButton').addEventListener('click', function () {
 function toggleView() {
     document.getElementById('loginContainer').style.display = 'none';
     document.getElementById('mainContainer').style.display = 'block';
-    fetchPosts(); // Carrega os posts ao abrir o editor
+    //fetchPosts(); // Carrega os posts ao abrir o editor
 }
 
 /**

@@ -1,10 +1,11 @@
 :root {
-    --primary-color: #007BFF;
-    --secondary-color: #6c757d;
-    --success-color: #28a745;
-    --danger-color: #dc3545;
-    --light-gray: #f8f9fa;
-    --dark-gray: #343a40;
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --background-color: #f8fafc;
+    --text-color: #1e293b;
+    --border-color: #e2e8f0;
+    --error-color: #ef4444;
+    --success-color: #22c55e;
 }
 
 * {
@@ -14,70 +15,60 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--light-gray);
-    color: var(--dark-gray);
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
 .container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-h1, h2 {
-    font-family: 'Open Sans', sans-serif;
-    color: var(--dark-gray);
-    margin-bottom: 20px;
+/* Login Container */
+#loginContainer {
+    max-width: 400px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
+#loginContainer h2 {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color);
 }
 
-h2 {
-    font-size: 1.8rem;
-    font-weight: 400;
-}
-
-input[type="text"],
-input[type="password"] {
+/* Form Elements */
+input, select {
     width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border-color: var(--primary-color);
+input:focus, select:focus {
     outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+/* Buttons */
 button {
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
+    padding: 0.75rem 1.5rem;
     border: none;
-    font-weight: 600;
-}
-
-button:hover {
-    transform: translateY(-2px);
-}
-
-button:active {
-    transform: translateY(0);
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .primary {
@@ -86,121 +77,152 @@ button:active {
 }
 
 .primary:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color);
 }
 
 .secondary {
-    background-color: var(--secondary-color);
-    color: white;
+    background-color: white;
+    border: 1px solid var(--border-color);
 }
 
 .secondary:hover {
-    background-color: #5a6268;
+    background-color: var(--background-color);
 }
 
-#logoutButton {
-    background-color: var(--danger-color);
-    color: white;
-}
-
-#logoutButton:hover {
-    background-color: #c82333;
-}
-
-#editor {
-    height: 300px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.button-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-#postList {
-    margin-top: 40px;
-}
-
-#posts li {
-    background: var(--light-gray);
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#posts li:hover {
-    background-color: #e9ecef;
-}
-
-@media (max-width: 600px) {
-    .container {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    .button-group {
-        flex-direction: column;
-    }
-
-    .button-group button {
-        margin-bottom: 10px;
-    }
-}
-
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
 }
 
-.header-right {
+header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.875rem;
+    color: var(--text-color);
+}
+
+/* Main Content */
+main {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.button-group {
     display: flex;
-    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-#logoutButton {
-    background-color: var(--danger-color);
-    color: white;
+/* Post List */
+#postList {
+    margin-top: 2rem;
 }
 
-#logoutButton:hover {
-    background-color: #c82333;
+#postList h2 {
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1rem;
 }
 
-/* Modifique a regra existente para os itens da lista de posts */
+#posts {
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+}
+
 #posts li {
-    background: var(--light-gray);
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+/* Editor Customization */
+.tox-tinymce {
+    border-radius: 8px !important;
+    border-color: var(--border-color) !important;
+}
+
+.custom-dropdown {
+    appearance: none;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px 16px;
+    width: 100%;
+    font-size: 1rem;
+    color: #1e293b;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.2s ease;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+.custom-dropdown:hover {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.custom-dropdown:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.custom-dropdown optgroup {
+    font-weight: 600;
+    color: #64748b;
+}
+
+.custom-dropdown option {
+    padding: 12px;
+    font-weight: normal;
+}
+
+.post-list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
-/* Adicione esta nova regra para o botão de excluir */
-.delete-btn {
-    background-color: var(--danger-color);
-    color: white;
-    border-radius: 3px;
-    font-size: 14px;
+.post-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e2e8f0;
+    position: relative;
 }
 
-.delete-btn:hover {
-    background-color: #c82333;
+.post-card::after {
+    content: '';
+    position: absolute;
+    bottom: -0.75rem;
+    left: 1rem;
+    right: 1rem;
+    height: 1px;
+    background: #e2e8f0;
 }
+
+.post-card:last-child::after {
+    display: none;
+}
+
+.post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.post-link:hover .post-card {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+

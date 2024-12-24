@@ -12,15 +12,15 @@
     <div id="loginContainer" class="container">
         <h2>Login</h2>
         <form id="loginForm">
-            <input type="text" id="username" placeholder="Usuário" required>
-            <input type="password" id="password" placeholder="Senha" required>
+            <input type="text" id="username" name="username" placeholder="Usuário" required>
+            <input type="password" id="password" name="password" placeholder="Senha" required>
             <button type="submit" id="loginButton">Entrar</button>
         </form>
     </div>
 
     <div id="mainContainer" class="container" style="display: none;">
         <header>
-            <h1>Editor do blog de Assíria</h1>
+            <h1>ImprensaMalakoff Editor</h1>
             <div class="header-right">
                 <button id="logoutButton">Sair</button>
             </div>
@@ -29,12 +29,57 @@
         
         <main>
             <input type="hidden" id="postIdHidden" name="postId" value="">
-            <input type="text" id="postTitle" placeholder="Título do Post" required>
-            <input type="text" id="postSubTitle" placeholder="Subtítulo do Post">
-            <input type="text" id="postCategory" placeholder="Categoria do Post">
 
-            <div id="editor"></div>
+            <!-- Título do Post -->
+            <input type="text" id="postTitle" placeholder="Título do Post" required>
+
+            <!-- Subtítulo do Post -->
+            <input type="text" id="postSubTitle" placeholder="Subtítulo do Post">
+
+            <!-- Categoria do Post -->
+            <select id="postCategory" class="custom-dropdown">
+                <option value="" disabled selected>Selecione uma categoria</option>
+                <option value="Tecnologia">Tecnologia</option>
+                <option value="Notícias">Notícias</option>
+                <option value="Educação">Educação</option>
+                <option value="Política">Política</option>
+                <option value="Economia">Economia</option>
+                <option value="Ciência">Ciência</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Esportes">Esportes</option>
+                <option value="Cultura">Cultura</option>
+            </select>
+
+
+            <!-- Tempo de Leitura -->
+            <input type="number" id="postReadTime" placeholder="Tempo de Leitura (minutos)" required>
+
+            <!-- Editor de Conteúdo -->
+            <tinymce-editor
+                id="myEditor"
+                api-key="u8nerf6eviwr9upqmrzti9qom7ivgl7bd4t5et9yde9clwde"
+                height="600"
+                plugins="preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons accordion"
+                menubar="file edit view insert format tools table help"
+                toolbar="undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | align numlist bullist | link image media | table | lineheight outdent indent | forecolor backcolor removeformat | charmap emoticons | code fullscreen preview | save print | pagebreak anchor codesample | ltr rtl"
+                autosave-ask-before-unload="true"
+                autosave-interval="30s"
+                autosave-prefix="{path}{query}-{id}-"
+                autosave-restore-when-empty="false"
+                autosave-retention="2m"
+                image-advtab="true"
+                importcss-append="true"
+                quickbars-selection-toolbar="bold italic | quicklink h2 h3 blockquote quickimage quicktable"
+                noneditable-class="mceNonEditable"
+                toolbar-mode="sliding"
+                contextmenu="link image table"
+                skin="oxide"
+                content_css="default"
+                content_style="body { font-family:Helvetica,Arial,sans-serif; font-size:16px }"
+                media-live-embeds="true">
+            </tinymce-editor>
             
+            <!-- Botões para salvar ou limpar o formulário -->
             <div class="button-group">
                 <button id="saveButton" class="primary">Publicar Post</button>
                 <button id="clearFormButton" class="secondary">Limpar Formulário</button>
@@ -47,10 +92,9 @@
         </aside>
     </div>
 
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/posts.js"></script>
-    <script src="js/editor.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-webcomponent@2/dist/tinymce-webcomponent.min.js"></script>
 </body>
 </html>
